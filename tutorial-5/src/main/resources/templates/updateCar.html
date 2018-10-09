@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update Car</title>
+	</head>
+	<body>
+		<h3>Update Car</h3>
+		<form th:action="@{/car/update/{id}(id=${carOld.id})}" th:object="${carNew}" method="POST">
+			Brand: <br>
+			<input type="text" name="brand" th:field="${carOld.brand}"/>
+			<br>
+			Type: <br>
+			<input type="text" name="type" th:field="${carOld.type}"/>
+			<br>
+			Price: <br>
+			<input type="number" name="price" th:field="${carOld.price}"/>
+			<br>
+			Amount: <br>
+			<input type="number" name="amount" th:field="${carOld.amount}"/>
+			<br><br>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>

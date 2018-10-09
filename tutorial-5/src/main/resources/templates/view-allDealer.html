@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View All Dealer</title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Alamat</th>
+				<th>No Telp</th>
+				<th>Delete</th>
+				<th>Update</th>
+			</tr>
+			<div th:each="dealer : ${listDealer}">
+				<tr>
+					<td th:text="${dealer.id}"></td>
+					<td th:text="${dealer.alamat}"></td>
+					<td th:text="${dealer.noTelp}"></td>
+					<td>
+						<a th:href="@{/dealer/delete/{id}(id=${dealer.id})}">Delete Dealer</a>
+					</td>
+					<td>
+						<a th:href="@{/dealer/update/{id}(id=${dealer.id})}">Update Dealer</a>
+					</td>
+				</tr>
+			</div>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UPDATE DEALER</title>
+	</head>
+	<body>
+		<h3>Tambah Dealer</h3>
+		<form th:action="@{/dealer/update/{id}(id=${dealerOld.id})}" th:object="${dealerNew}" method="POST">
+			Alamat: <br>
+			<input type="text" name="alamat" th:field="${dealerOld.alamat}"/>
+			<br>
+			No Telp: <br>
+			<input type="text" name="noTelp" th:field="${dealerOld.noTelp}"/>
+			<br>
+			<br>
+			<button type="submit">Submit</button>	
+		</form>
+	</body>
+</html>
