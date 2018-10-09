@@ -11,6 +11,7 @@
 		<br>
 		<table>
 			<tr>
+				<th>Count</th>
 				<th>Brand</th>
 				<th>Type</th>
 				<th>Price</th>
@@ -18,11 +19,15 @@
 				<th>Delete</th>
 				<th>Update</th>
 			</tr>
-			<div th:each="car : ${listCar}">
-				<tr>
+			<tbody>
+				<tr th:each="car,iterationStatus : *{listCar}">
+					<td th:text="${iterationStatus.count}"></td>
 					<td th:text="${car.brand}"></td>
 					<td th:text="${car.type}"></td>
-					<td th:text="${car.price}"></td>
+					<!-- <td th:text="${car.price}"></td> -->
+					<!-- <td th:if="${car.price} >= 10000">Di atas 10K</td>
+					<td th:unless="${car.price} >= 10000">Di bawah 10K</td> -->
+					<td th:text="${car.price} >= 100000 ? 'Di ats 100K' : 'Di bwh 100K'"></td>
 					<td th:text="${car.amount}"></td>
 					<td>
 						<a th:href="@{/car/delete/{id}(id=${car.id})}">Delete Car</a>
@@ -31,7 +36,7 @@
 						<a th:href="@{/car/update/{id}(id=${car.id})}">Update Car</a>
 					</td>
 				</tr>
-			</div>
+			</tbody>
 		</table>
 	</body>
 </html>

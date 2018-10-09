@@ -1,7 +1,7 @@
-package com.apap.tutorial4.controller;
+package com.apap.tutoria5.controller;
 
-import com.apap.tutorial4.model.*;
-import com.apap.tutorial4.service.*;
+import com.apap.tutoria5.model.*;
+import com.apap.tutoria5.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

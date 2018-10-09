@@ -1,7 +1,7 @@
-package com.apap.tutorial4.repository;
+package com.apap.tutoria5.repository;
 
 import java.util.List;
-import com.apap.tutorial4.model.CarModel;
+import com.apap.tutoria5.model.CarModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 /**

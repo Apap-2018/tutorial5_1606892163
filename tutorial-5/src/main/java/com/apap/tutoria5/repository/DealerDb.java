@@ -1,6 +1,6 @@
-package com.apap.tutorial4.repository;
+package com.apap.tutoria5.repository;
 
-import com.apap.tutorial4.model.DealerModel;
+import com.apap.tutoria5.model.DealerModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
