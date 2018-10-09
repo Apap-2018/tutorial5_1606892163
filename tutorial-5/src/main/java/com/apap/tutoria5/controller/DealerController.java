@@ -40,15 +40,27 @@ public class DealerController {
 	}
 	
 	@RequestMapping(value = "/dealer/view", method = RequestMethod.GET)
-	private String viewDealerById(@RequestParam(value = "dealerId", required = true) Long id, Model model) {
+	private String viewDealerById(@RequestParam(value = "dealerId") Long dealerId, Model model) {
+		
+//		DealerModel archiveDealer = dealerService.getDealerDetailById(dealerId).get();
+//		/**
+//		 * Untuk mendapatkan list car terurut berdasarkan harga dengan Query
+//		 * Bisa jadi berbeda dengan cara Anda
+//		 */
+//		List<CarModel> archiveListCar = carService.getListCarOrderByPriceAsc(dealerId);
+//		archiveDealer.setListCar(archiveListCar);
+//		model.addAttribute("dealer", archiveDealer);
+//		return "view-dealer";
+		
 		DealerModel dealer = null;
 		List<CarModel> listCar = null;
 		
-		if (dealerService.getDealerDetailById(id).isPresent()) {
-			dealer = dealerService.getDealerDetailById(id).get();
+		if (dealerService.getDealerDetailById(dealerId).isPresent()) {
+			dealer = dealerService.getDealerDetailById(dealerId).get();
 			listCar = dealer.getListCar();
 			Collections.sort(listCar);
 		}
+		dealer.setListCar(listCar);
 		model.addAttribute("dealer", dealer);
 		model.addAttribute("listCar", listCar);
 		return "view-dealer";
@@ -63,6 +75,14 @@ public class DealerController {
 			model.addAttribute("listDealer", listDealer);
 		}
 		return "view-allDealer";
+	}
+	
+	@RequestMapping(value = "/car/delete", method = RequestMethod.POST)
+	private String delete(@ModelAttribute DealerModel dealer, Model model) {
+		for (CarModel car : dealer.getListCar()) {
+			carService.deleteCar(car);
+		}
+		return "delete";
 	}
 	
 	@RequestMapping(value = "/dealer/delete/{dealerId}", method = RequestMethod.GET)

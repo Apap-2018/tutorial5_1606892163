@@ -46,4 +46,9 @@ public class CarServiceImpl implements CarService {
 	 carOld.setPrice(carNew.getPrice());
 	 carOld.setAmount(carNew.getAmount());
  }
+ 
+ @Override
+ public void deleteCar(CarModel car) {
+	 carDb.delete(car);
+ }
 }

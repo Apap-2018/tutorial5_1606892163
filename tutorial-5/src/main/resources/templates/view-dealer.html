@@ -8,8 +8,51 @@
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h3 th:text="'Alamat: ' + ${dealer.alamat}"></h3>
-		<h3 th:text="'Telepon: ' + ${dealer.noTelp}"></h3>
+		
+		<h3 th:text="'Dealer'"></h3>
+		<p th:text="'Alamat: ' + ${dealer.alamat}"></p>
+		<p th:text="'Telepon: ' + ${dealer.noTelp}"></p>
+		
+		<form th:action="@{/dealer/delete/}">
+			<input type="hidden" name="dealerId" th:value="${dealer.id}">
+			<button type="submit">Hapus Dealer</button>
+		</form>
+		<br>
+		<form th:action="@{/car/delete}" th:object="${dealer}" method="POST">
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Brand</th>
+						<th>Type</th>
+						<th>Price</th>
+						<th>Amount</th>
+						<th>Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="car,iterationStatus : *{listCar}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${car.brand}"></td>
+						<td th:text="${car.type}"></td>
+						<td th:text="${car.price} >= 100000 ? 'Di ats 100K' : 'Di bwh 100K'"></td>
+						<td th:text="${car.amount}"></td>
+						<td>
+							<input type="checkbox" th:field="*{listCar}" th:value="${car.id}" />
+							<label th:for="${#ids.prev('listCar')}">Hapus</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Hapus yang dipilih</button>
+		</form>
+		<br>
+		<form th:action="@{/car/add/} + ${dealer.id}">
+			<button value="submit">Tambah Mobil</button>
+		</form>
+		
+		<!-- 
+		
 		<a th:href="@{/car/add/{id}(id=${dealer.id})}">Add car</a>
 		<br>
 		<br>
@@ -28,9 +71,9 @@
 					<td th:text="${iterationStatus.count}"></td>
 					<td th:text="${car.brand}"></td>
 					<td th:text="${car.type}"></td>
-					<!-- <td th:text="${car.price}"></td> -->
-					<!-- <td th:if="${car.price} >= 10000">Di atas 10K</td>
-					<td th:unless="${car.price} >= 10000">Di bawah 10K</td> -->
+					// <td th:text="${car.price}"></td>
+					// <td th:if="${car.price} >= 10000">Di atas 10K</td>
+					<td th:unless="${car.price} >= 10000">Di bawah 10K</td> 
 					<td th:text="${car.price} >= 100000 ? 'Di ats 100K' : 'Di bwh 100K'"></td>
 					<td th:text="${car.amount}"></td>
 					<td>
@@ -42,5 +85,6 @@
 				</tr>
 			</tbody>
 		</table>
+		 -->
 	</body>
 </html>
