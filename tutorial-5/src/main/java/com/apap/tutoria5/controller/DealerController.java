@@ -23,19 +23,22 @@ public class DealerController {
 	private CarService carService;
 	
 	@RequestMapping("/")
-	private String home() {
+	private String home(Model model) {
+		model.addAttribute("page-title", "Home");
 		return "home";
 	}
 	
 	@RequestMapping(value = "/dealer/add", method = RequestMethod.GET)
 	private String add(Model model) {
 		model.addAttribute("dealer", new DealerModel());
+		model.addAttribute("page-title", "Add Dealer");
 		return "addDealer";
 	}
 	
 	@RequestMapping(value = "/dealer/add", method = RequestMethod.POST)
-	private String addDealerSubmit(@ModelAttribute DealerModel dealer) {
+	private String addDealerSubmit(@ModelAttribute DealerModel dealer, Model model) {
 		dealerService.addDealer(dealer);
+		model.addAttribute("page-title", "Add Succeed");
 		return "add";
 	}
 	
@@ -88,6 +91,13 @@ public class DealerController {
 	@RequestMapping(value = "/dealer/delete/{dealerId}", method = RequestMethod.GET)
 	private String deleteDealerById(@PathVariable(value = "dealerId") Long id) {
 		dealerService.deleteById(id);
+		
+		return "delete";
+	}
+	
+	@RequestMapping(value = "/dealer/delete")
+	private String deleteDealer(@RequestParam(value = "dealerId") Long dealerId) {
+		dealerService.deleteById(dealerId);
 		
 		return "delete";
 	}

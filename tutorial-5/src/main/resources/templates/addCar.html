@@ -12,6 +12,23 @@
 		<h2>Hello!</h2>
 		
 		<h3>Tambah Mobil</h3>
+		<br>
+		
+		<form th:action="@{/car/delete}" th:object="${dealer}" method="POST">
+			<table class="text-center">
+				<thead>
+					<tr>
+						<th>Brand</th>
+						<th>Type</th>
+						<th>Price</th>
+						<th>Amount</th>
+						<td><a class="btn btn-primary">sadasd</a></td>
+					</tr>
+				</thead>
+			</table>
+		</form>
+		
+		
 		<form th:action="@{/car/add}" th:object="${car}" method="POST">
 			<input type="hidden" th:field="*{dealer}" />
 			

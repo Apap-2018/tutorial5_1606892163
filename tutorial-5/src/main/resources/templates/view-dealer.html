@@ -13,13 +13,13 @@
 		<p th:text="'Alamat: ' + ${dealer.alamat}"></p>
 		<p th:text="'Telepon: ' + ${dealer.noTelp}"></p>
 		
-		<form th:action="@{/dealer/delete/}">
+		<form th:action="@{/dealer/delete}">
 			<input type="hidden" name="dealerId" th:value="${dealer.id}">
 			<button type="submit">Hapus Dealer</button>
 		</form>
 		<br>
 		<form th:action="@{/car/delete}" th:object="${dealer}" method="POST">
-			<table>
+			<table class="text-center">
 				<thead>
 					<tr>
 						<th>No.</th>
