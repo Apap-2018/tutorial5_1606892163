@@ -2,8 +2,12 @@
 <html>
 	<head>
 		<title>Update Car</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>	
+		
 		<h3>Update Car</h3>
 		<form th:action="@{/car/update/{id}(id=${carOld.id})}" th:object="${carNew}" method="POST">
 			Brand: <br>
