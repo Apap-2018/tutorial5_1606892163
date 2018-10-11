@@ -140,7 +140,7 @@ public class DealerController {
 		return "delete";
 	}
 	
-	@RequestMapping(value = "/dealer/update/{dealerId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/dealer/update/{dealerId}")
 	private String updateDealer(@PathVariable(value = "dealerId") Long id, Model model) {
 		DealerModel dealerOld = dealerService.getDealerDetailById(id).get();
 		model.addAttribute("dealerOld", dealerOld);
