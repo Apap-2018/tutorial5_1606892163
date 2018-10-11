@@ -1,0 +1,10 @@
+<div th:include="..."> content here </div>
+fragment will be placed inside <div> tag.
+
+<div th:replace="..."> content here </div>
+then <div> will be replaced by content.
+
+th:include -> akan mengisi tag yg memiliki th:include tersebut dengan konten dari th:include-nya
+th:replcae -> akan menggantikan tag yang memiliki th:replace tersebut dengan konten dari th:replace-nya
+
+sumber: https://stackoverflow.com/questions/37103958/difference-between-thymeleaf-include-and-replace
